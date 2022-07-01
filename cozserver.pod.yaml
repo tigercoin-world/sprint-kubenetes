@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cozserver
+spec:
+  containers:
+  - name: coz-pod
+    image: sebcontents/cozserver:1.0
+    ports:
+    - containerPort: 80
