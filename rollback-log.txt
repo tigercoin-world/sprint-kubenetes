@@ -1,0 +1,21 @@
+$ kubectl rollout history deployment cozserver-deployment
+deployment.apps/cozserver-deployment
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+7         kubectl apply --filename=cozserver-deployment-v1.yaml --record=true
+8         kubectl apply --filename=cozserver-deployment-v2.yaml --record=true
+9         kubectl apply --filename=cozserver-deployment-v3.yaml --record=true
+
+$ kubectl rollout undo deployment cozserver-deployment
+deployment.apps/cozserver-deployment rolled back
+
+
+$ kubectl rollout history deployment cozserver-deployment
+deployment.apps/cozserver-deployment
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+7         kubectl apply --filename=cozserver-deployment-v1.yaml --record=true
+9         kubectl apply --filename=cozserver-deployment-v3.yaml --record=true
+10        kubectl apply --filename=cozserver-deployment-v2.yaml --record=true

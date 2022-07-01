@@ -9,6 +9,12 @@ spec:
   selector:
     matchLabels:
       app: cozserver
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     # 여기서부터 파드 템플릿이다
     metadata:
@@ -17,7 +23,6 @@ spec:
     spec:
       containers:
       - name: coz-container
-        image: sebcontents/cozserver:1.0
+        image: sebcontents/cozserver:2.0
         ports:
         - containerPort: 8080
-
